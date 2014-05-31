@@ -293,7 +293,5 @@ var game_loop = setInterval(function(){
 	if(m_l == true && base.x > 0){
 		base.x -= base.vell;
 	}
-	
-	}
 
 },17);
