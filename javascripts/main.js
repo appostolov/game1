@@ -260,8 +260,8 @@ var game_loop = setInterval(function(){
 	}
 	
 	if(count == num){
-		ball.vell += 1;
-		base.vell += 1;
+		ball.vell += 1.5;
+		base.vell += 1.3;
 		num += 6;
 		count = 0;
 		sub_x = 0;
