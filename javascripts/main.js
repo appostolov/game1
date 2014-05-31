@@ -293,5 +293,16 @@ var game_loop = setInterval(function(){
 	if(m_l == true && base.x > 0){
 		base.x -= base.vell;
 	}
+	
+	if(num == 72){
+		clearInterval("game_loop");
+		c.fillStyle = "gold";
+		c.fillRect(0,0,c1.width,c1.height);
+		
+		ctx.font="100px Arial";
+		c.fillStyle = "red";
+		c.fillText("Fuck YUO PUNK",100,150);
+	}
+	}
 
 },17);
