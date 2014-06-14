@@ -2,7 +2,12 @@ var c1 = document.getElementById("can");
 var c = c1.getContext("2d");
 
 //BACKGROUND COLOR
-var back_color = "#3cf";
+var back = ["img","img1","img2","img4","img3"];
+var nn = 0;
+var win = "win_img";
+
+var ar_font = 20;
+var ar_num = 0.1;
 
 //BALL object
 var ball = new Object();
@@ -71,7 +76,7 @@ var game_loop = setInterval(function(){
 	var count = 0;
 
 	//BACKGROUND
-	var img=document.getElementById("img");
+	var img=document.getElementById(back[nn]);
 	c.drawImage(img,0,0);
 	
 	var brick_view=document.getElementById("brick_img");
@@ -109,12 +114,6 @@ var game_loop = setInterval(function(){
 	//BALL hit top
 	if(ball.y <= ball.r){
 		ball.y = ball.r;
-		ball.dir = 360 - ball.dir;
-	}
-	
-	//BALL hit the bottom
-	if(ball.y >= c1.height - ball.r){
-		ball.y = c1.height - ball.r;
 		ball.dir = 360 - ball.dir;
 	}
 
@@ -259,31 +258,65 @@ var game_loop = setInterval(function(){
 		}
 	}
 	
-	if(count == num){
-		ball.vell += 1.5;
-		base.vell += 1.3;
-		num += 6;
-		count = 0;
-		sub_x = 0;
-		sub_y = 2;
+	//BALL hit the bottom
+	if(ball.y >= c1.height - ball.r){
+		nn = 0;
+		num = 6;
 		for(var a = 0; a < num; a++){
-			if(sub_x == 6){
-				sub_y += 39;
-				sub_x = 0;
-			}
-			tar[a] = new Object();
-			tar[a].x = 2 + sub_x*83;
-			tar[a].y = sub_y;
-			tar[a].w = 81;
-			tar[a].h = 37;
 			tar[a].live = true;
-			tar[a].color = "green";
-			sub_x++;
 		}
-		ball.y = 37*(num/5) + ball.r + 1;
-		ball.x = base.x + base.width/2;
+		
+		ball.x = c1.width/2;
+		ball.y = 55;
+		ball.r = 15;
 		ball.dir = 90;
+		ball.vell = 3;
+		
+		base.vell = 3;
+
 	}
+	
+	if(count == num){
+		
+			nn += 1;	
+			ball.vell += 1.5;
+			base.vell += 1.3;
+			num += 6;
+			count = 0;
+			sub_x = 0;
+			sub_y = 2;
+			for(var a = 0; a < num; a++){
+				if(sub_x == 6){
+					sub_y += 39;
+					sub_x = 0;
+				}
+				tar[a] = new Object();
+				tar[a].x = 2 + sub_x*83;
+				tar[a].y = sub_y;
+				tar[a].w = 81;
+				tar[a].h = 37;
+				tar[a].live = true;
+				tar[a].color = "green";
+				sub_x++;
+			}
+			ball.y = 37*(num/5) + ball.r + 1;
+			ball.x = base.x + base.width/2;
+			ball.dir = 90;
+		}
+		if(num == 36){
+			clearInterval(game_loop);
+				var img1=document.getElementById("success");
+				c.drawImage(img1,0,0);	
+			}
+			
+		if(ar_font >= 22 || ar_font < 20){
+			ar_num = -ar_num;
+		}
+			
+		document.getElementById("arr_1").style.fontSize = ar_font+"px";
+		document.getElementById("arr_2").style.fontSize = ar_font+"px";
+		
+		ar_font += ar_num;
 	
 	//BASE movement
 	if(m_r == true && base.x < c1.width - base.width){
@@ -295,3 +328,6 @@ var game_loop = setInterval(function(){
 	}
 
 },17);
+
+//var img=document.getElementById("success");
+//c.drawImage(img,0,0);
