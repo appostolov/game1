@@ -4,7 +4,6 @@
 *{
 	margin:0;
 	padding:0;
-	float:left;
 }
 
 body{
@@ -13,4 +12,31 @@ body{
 
 img{
 	display:none;
+}
+
+#container{
+	position:absolute;
+	width:100%;
+}
+
+#can_hold{
+	position:relative;
+	top:100px;
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+#arr_1{
+	position:absolute;
+	left:20px;
+	font-size:15px;
+	color:blue;
+}
+
+#arr_2{
+	position:absolute;
+	right:20px;
+	font-size:15px;
+	color:blue;
 }
