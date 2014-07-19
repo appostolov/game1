@@ -40,3 +40,9 @@ img{
 	font-size:15px;
 	color:blue;
 }
+
+#home_path{
+	position:absolute;
+	top:0;
+	left:0;
+}
